@@ -13,7 +13,7 @@ from django.db.models import CASCADE
 from django.db.models.query_utils import Q
 from django.utils import timezone
 from django.utils.six import python_2_unicode_compatible
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 from dynamic_logging.signals import config_applied
 
