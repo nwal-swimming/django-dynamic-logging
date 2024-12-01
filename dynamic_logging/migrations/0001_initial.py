@@ -36,8 +36,8 @@ class Migration(migrations.Migration):
                 'get_latest_by': 'start_date',
             },
         ),
-        migrations.AlterIndexTogether(
-            name='trigger',
-            index_together=set([('start_date', 'end_date')]),
+        migrations.AddIndex(
+            'trigger',
+            models.Index(name='trigger_effective_dates', fields=["start_date", "end_date"])
         ),
     ]

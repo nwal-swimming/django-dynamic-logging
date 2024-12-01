@@ -81,9 +81,7 @@ class Trigger(models.Model):
         self.config.apply(self)
 
     class Meta:
-        index_together = [
-            ('start_date', 'end_date'),
-        ]
+        indexes = [models.Index(fields=["start_date", "end_date"])]
         get_latest_by = 'start_date'
 
 
