@@ -13,6 +13,7 @@ logger = logging.getLogger(__name__)
 
 class DynamicLoggingConfig(AppConfig):
     name = 'dynamic_logging'
+    verbose_name = 'Dynamic Logging'
     auto_signal_handler = AutoSignalsHandler()
 
     def __init__(self, *args, **kwargs):

@@ -48,7 +48,8 @@ class Trigger(models.Model):
     reactivate the last config.
     """
     objects = TriggerQueryset.as_manager()
-
+    
+    id = models.AutoField(auto_created=True, serialize=False, primary_key=True, verbose_name='ID')
     name = models.CharField(max_length=255, blank=False, null=False)
 
     is_active = models.BooleanField(default=True)
@@ -81,7 +82,7 @@ class Trigger(models.Model):
         self.config.apply(self)
 
     class Meta:
-        indexes = [models.Index(fields=["start_date", "end_date"])]
+        indexes = [models.Index(name='trigger_effective_dates',fields=["start_date", "end_date"])]
         get_latest_by = 'start_date'
 
 
@@ -108,6 +109,7 @@ class Config(models.Model):
         'handlers': ['level', 'filters']
     }
 
+    id = models.AutoField(auto_created=True, serialize=False, primary_key=True, verbose_name='ID')
     name = models.CharField(max_length=255)
 
     config_json = models.TextField(validators=[json_value], default='{}')
